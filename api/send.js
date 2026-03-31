@@ -46,7 +46,7 @@ export default async function handler(req, res) {
   <!-- Logo -->
   <tr>
     <td align="center" style="padding-bottom:28px;">
-      <img src="https://upload.wikimedia.org/wikipedia/de/b/b0/Kentucky_Fried_Chicken_201x_logo.svg" alt="KFC" width="100" style="display:block;" />
+      <img src="https://1000logos.net/wp-content/uploads/2017/03/KFC_logo.png" alt="KFC" width="100" style="display:block;" />
     </td>
   </tr>
 
