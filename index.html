@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KFC Code Generator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    color: #fff;
+    padding: 20px;
+  }
+
+  .card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 0 60px rgba(235,0,27,0.08);
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .logo img {
+    width: 72px;
+  }
+
+  /* KFC bucket SVG placeholder */
+  .kfc-badge {
+    display: inline-block;
+    background: #eb001b;
+    color: white;
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .sub {
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 32px;
+  }
+
+  .code-preview {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .code-preview .label {
+    font-size: 11px;
+    color: #444;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .code-preview .code {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    color: #eb001b;
+    word-break: break-all;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field.full {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  input {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  input:focus { border-color: #eb001b; }
+  input::placeholder { color: #333; }
+
+  input[type="number"]::-webkit-inner-spin-button { display: none; }
+
+  .divider {
+    height: 1px;
+    background: #1e1e1e;
+    margin: 20px 0;
+  }
+
+  .email-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .btn {
+    background: #eb001b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn:hover { background: #c8001a; }
+  .btn:active { transform: scale(0.98); }
+  .btn:disabled { background: #2a2a2a; color: #444; cursor: not-allowed; }
+
+  .status {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 13px;
+    min-height: 20px;
+    color: #555;
+  }
+
+  .status.ok { color: #22c55e; }
+  .status.err { color: #eb001b; }
+
+  .wings-count {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .wings-count span {
+    font-size: 20px;
+    color: #eb001b;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">
+    <div class="kfc-badge">KFC</div>
+  </div>
+  <h1>HOT WINGS CODE GENERATOR</h1>
+  <p class="sub">internes tool · resend · nicht öffentlich</p>
+
+  <div class="code-preview">
+    <div class="label">generierter aktionscode</div>
+    <div class="code" id="codeDisplay">GER · · ·</div>
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label>Store-Nr. (K___)</label>
+      <input type="text" id="store" placeholder="z.B. 911" maxlength="4" oninput="updateCode()">
+    </div>
+    <div class="field">
+      <label>Bestellnummer</label>
+      <input type="text" id="order" placeholder="z.B. 268" maxlength="4" oninput="updateCode()">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label>Tag (TT)</label>
+      <input type="text" id="day" placeholder="11" maxlength="2" oninput="updateCode()">
+    </div>
+    <div class="field">
+      <label>Monat (MM)</label>
+      <input type="text" id="month" placeholder="09" maxlength="2" oninput="updateCode()">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field full">
+      <label>Jahr (JJ)</label>
+      <input type="text" id="year" placeholder="25" maxlength="2" oninput="updateCode()">
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="email-section">
+    <label>empfänger email</label>
+    <input type="email" id="email" placeholder="name@example.com">
+  </div>
+
+  <button class="btn" id="sendBtn" onclick="sendMail()">MAIL SENDEN</button>
+  <div class="status" id="status"></div>
+</div>
+
+<script>
+function pad(val, len = 2) {
+  return String(val).padStart(len, '0');
+}
+
+function buildCode() {
+  const store = document.getElementById('store').value.trim();
+  const order = document.getElementById('order').value.trim();
+  const day   = document.getElementById('day').value.trim();
+  const month = document.getElementById('month').value.trim();
+  const year  = document.getElementById('year').value.trim();
+
+  if (!store && !order && !day) return 'GER · · ·';
+
+  const storeStr = store ? `K${store}` : 'K___';
+  const orderStr = order || '___';
+  const dateStr  = (day && month && year) ? `${pad(day)}${pad(month)}${year}` : '______';
+
+  return `GER${storeStr}${orderStr}${dateStr}`;
+}
+
+function updateCode() {
+  document.getElementById('codeDisplay').textContent = buildCode();
+}
+
+async function sendMail() {
+  const code  = buildCode();
+  const email = document.getElementById('email').value.trim();
+  const btn   = document.getElementById('sendBtn');
+  const status = document.getElementById('status');
+
+  if (code.includes('·') || code.includes('_')) {
+    status.className = 'status err';
+    status.textContent = '⚠ bitte alle felder ausfüllen';
+    return;
+  }
+  if (!email) {
+    status.className = 'status err';
+    status.textContent = '⚠ email fehlt';
+    return;
+  }
+
+  btn.disabled = true;
+  status.className = 'status';
+  status.textContent = 'wird gesendet…';
+
+  try {
+    const res = await fetch('/api/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code, email })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      status.className = 'status ok';
+      status.textContent = '✓ mail erfolgreich gesendet!';
+    } else {
+      throw new Error(data.error || 'fehler');
+    }
+  } catch(e) {
+    status.className = 'status err';
+    status.textContent = '✗ ' + e.message;
+  } finally {
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
