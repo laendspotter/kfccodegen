@@ -2,10 +2,8 @@
   "name": "kfc-code-generator",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "resend": "^3.2.0"
-  },
-  "engines": {
-    "node": "24.x"
   }
 }
