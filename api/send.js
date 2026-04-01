@@ -21,40 +21,30 @@ export default async function handler(req, res) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KFC Aktionscode</title>
-<style>
-  body, .bg { background-color: #000000 !important; }
-  .text-main { color: #ffffff !important; }
-  .text-sub { color: #aaaaaa !important; }
-  @media (prefers-color-scheme: dark) {
-    body, .bg { background-color: #000000 !important; }
-    .text-main { color: #ffffff !important; }
-    .text-sub { color: #aaaaaa !important; }
-  }
-</style>
 </head>
-<body class="bg" style="margin:0;padding:0;background-color:#000000;font-family:Arial,Helvetica,sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" class="bg" style="background-color:#000000;">
-<tr><td align="center" style="padding:24px 16px;">
-<table width="480" cellpadding="0" cellspacing="0" style="max-width:480px;width:100%;">
+<body style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:transparent;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:transparent;">
+<tr><td align="center" style="padding:20px 16px;">
+<table width="500" cellpadding="0" cellspacing="0" style="max-width:500px;width:100%;background:transparent;">
 
   <!-- Logo -->
   <tr>
-    <td align="center" style="padding-bottom:20px;">
-      <img src="https://kfccode.laendspotter.com/IMG_4378.png" alt="KFC" width="80" style="display:block;margin:0 auto;background:transparent;" />
+    <td align="center" style="padding-bottom:22px;">
+      <img src="https://kfccode.laendspotter.com/IMG_4378.png" alt="KFC" width="110" style="display:block;margin:0 auto;" />
     </td>
   </tr>
 
   <!-- Greeting -->
   <tr>
-    <td align="center" style="padding-bottom:14px;">
-      <p class="text-main" style="margin:0;font-size:14px;color:#ffffff;text-align:center;">Hallo ,</p>
+    <td align="center" style="padding-bottom:16px;">
+      <p style="margin:0;font-size:15px;color:#ffffff;text-align:center;">Hallo ,</p>
     </td>
   </tr>
 
   <!-- Thank you -->
   <tr>
-    <td align="center" style="padding-bottom:16px;">
-      <p class="text-main" style="margin:0;font-size:13px;color:#ffffff;text-align:center;line-height:1.8;">
+    <td align="center" style="padding-bottom:18px;">
+      <p style="margin:0;font-size:14px;color:#ffffff;text-align:center;line-height:1.75;">
         herzlichen Dank für dein ehrliches Feedback,<br>
         das wir nutzen werden, um dir und unseren<br>
         anderen KFC-Gästen ein angenehmes<br>
@@ -65,24 +55,24 @@ export default async function handler(req, res) {
 
   <!-- Code intro -->
   <tr>
-    <td align="center" style="padding-bottom:14px;">
-      <p class="text-main" style="margin:0;font-size:13px;color:#ffffff;text-align:center;line-height:1.8;">
-        Hier ist dein Aktionscode für 3 kostenlose Hot Wings*.
+    <td align="center" style="padding-bottom:16px;">
+      <p style="margin:0;font-size:14px;color:#ffffff;text-align:center;line-height:1.75;">
+        Hier ist dein Aktionscode für 3 kostenlose Hot<br>Wings*.
       </p>
     </td>
   </tr>
 
   <!-- Code -->
   <tr>
-    <td align="center" style="padding-bottom:16px;">
-      <p class="text-main" style="margin:0;font-size:19px;font-weight:bold;color:#ffffff;text-align:center;letter-spacing:1px;">${code}</p>
+    <td align="center" style="padding-bottom:18px;">
+      <p style="margin:0;font-size:20px;font-weight:bold;color:#ffffff;text-align:center;letter-spacing:0.5px;">${code}</p>
     </td>
   </tr>
 
   <!-- CTA -->
   <tr>
-    <td align="center" style="padding-bottom:28px;">
-      <p class="text-main" style="margin:0;font-size:13px;color:#ffffff;text-align:center;line-height:1.8;">
+    <td align="center" style="padding-bottom:24px;">
+      <p style="margin:0;font-size:14px;font-weight:bold;color:#ffffff;text-align:center;line-height:1.75;">
         Wir freuen uns darauf, dich demnächst wieder<br>bei uns begrüßen zu dürfen!
       </p>
     </td>
@@ -91,13 +81,16 @@ export default async function handler(req, res) {
   <!-- Fine print -->
   <tr>
     <td align="center" style="padding-bottom:14px;">
-      <p class="text-sub" style="margin:0;font-size:10px;color:#aaaaaa;text-align:center;line-height:1.7;">
-        *Einlösbar nur in teilnehmenden Restaurants. Das Angebot ist innerhalb von 14 Tagen ab
-        Ausstellung gültig. Einlösung nur über unsere Website
-        <a href="https://www.kfc.de" style="color:#aaaaaa;">www.kfc.de</a> und unsere KFC
+      <p style="margin:0;font-size:12px;color:#aaaaaa;text-align:center;line-height:1.7;">
+        *Einlösbar nur in teilnehmenden Restaurants.
+        Das Angebot ist innerhalb von 14 Tagen ab
+        Ausstellung gültig. Einlösung nur über unsere
+        Website <a href="https://www.kfc.de" style="color:#aaaaaa;">www.kfc.de</a> und unsere KFC
         Deutschland App möglich, bei einem Bestellung von mindestens 6&euro;, vorbehaltlich der
-        Verfügbarkeit im Restaurant. Nicht gültig in Verbindung mit anderen Gutscheinen oder
-        Rabatten. Exklusive Mehrwertsteuer. Nur einmalig einlösbar. Ein Aktionscode pro Gast
+        Verfügbarkeit im Restaurant. Nicht gültig in
+        Verbindung mit anderen Gutscheinen oder
+        Rabatten. Exklusive Mehrwertsteuer. Nur
+        einmalig einlösbar. Ein Aktionscode pro Gast
         und pro Besuch.
       </p>
     </td>
@@ -106,7 +99,7 @@ export default async function handler(req, res) {
   <!-- Privacy -->
   <tr>
     <td align="center" style="padding-bottom:14px;">
-      <p class="text-sub" style="margin:0;font-size:10px;color:#aaaaaa;text-align:center;line-height:1.7;">
+      <p style="margin:0;font-size:12px;color:#aaaaaa;text-align:center;line-height:1.7;">
         KFC respektiert deine Daten und deine Privatsphäre. Für weitere Informationen darüber,
         wie wir online gesammelte Informationen verwenden, lies bitte unsere
         <a href="https://www.kfc.de/datenschutz" style="color:#aaaaaa;text-decoration:underline;">Datenschutzrichtlinie.</a>
@@ -117,7 +110,7 @@ export default async function handler(req, res) {
   <!-- Support -->
   <tr>
     <td align="center" style="padding-bottom:14px;">
-      <p class="text-sub" style="margin:0;font-size:10px;color:#aaaaaa;text-align:center;line-height:1.7;">
+      <p style="margin:0;font-size:12px;color:#aaaaaa;text-align:center;line-height:1.7;">
         Wenn du eine Anfrage stellen möchtest, sende<br>
         uns bitte eine E-Mail an: <a href="mailto:service@kfc.de" style="color:#aaaaaa;">service@kfc.de</a> oder<br>
         besuchen Sie uns unter<br>
@@ -129,21 +122,21 @@ export default async function handler(req, res) {
   <!-- Thanks -->
   <tr>
     <td align="center" style="padding-bottom:20px;">
-      <p class="text-main" style="margin:0;font-size:12px;color:#ffffff;text-align:center;">Vielen Dank.</p>
+      <p style="margin:0;font-size:13px;color:#ffffff;text-align:center;">Vielen Dank.</p>
     </td>
   </tr>
 
   <!-- Footer -->
   <tr>
     <td align="center" style="padding-bottom:6px;">
-      <p class="text-sub" style="margin:0;font-size:10px;color:#666666;text-align:center;">&copy; 2024 KFC Alle Rechte vorbehalten.</p>
+      <p style="margin:0;font-size:11px;color:#555555;text-align:center;">&copy; 2024 KFC Alle Rechte vorbehalten.</p>
     </td>
   </tr>
 
   <!-- Social -->
   <tr>
     <td align="center" style="padding-top:8px;padding-bottom:16px;">
-      <p class="text-main" style="margin:0 0 8px 0;font-size:11px;font-weight:bold;color:#ffffff;text-align:center;">Bleiben Sie in Verbindung</p>
+      <p style="margin:0 0 8px 0;font-size:11px;font-weight:bold;color:#ffffff;text-align:center;">Bleiben Sie in Verbindung</p>
       <table cellpadding="0" cellspacing="0" align="center">
         <tr>
           <td style="padding:0 4px;">
@@ -165,7 +158,7 @@ export default async function handler(req, res) {
 
   <!-- Fake disclaimer -->
   <tr>
-    <td align="center" style="border-top:1px solid #222222;padding-top:12px;">
+    <td align="center" style="padding-top:12px;border-top:1px solid #222222;">
       <p style="margin:0;font-size:9px;color:#333333;text-align:center;">haha das ist ein test</p>
     </td>
   </tr>
